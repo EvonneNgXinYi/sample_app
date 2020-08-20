@@ -4,18 +4,50 @@ en:
   layouts:
     application:
       title: "Sample App"
+    footer: 
+      desc_a: "The"
+      desc_b: "by"
+      about_footer: "About"
+      contact_footer: "Contact"
+      new_footer: "News"
+    header:
+      logo: "sample app"
+      help_header: "Help"
+      home_header: "Home"
+      login_header: "Log in"
 
+  ruby_on_rails: "Ruby on Rails"
   ruby_on_rails_tut: "Ruby on Rails Tutorial"
   rails_tut_help: "Rails Tutorial Help Page"
   ruby_on_rails_tut_book: "Ruby on Rails Tutorial book"
+  ruby_on_rails_tut_author: "Michael Hartl"
 
   static_pages:
     home:
       home_title: "Home" 
-      heading: "Sample App"
+      heading: "Welcome to the Sample App"
       description_title: "This is the home page for the"
       description_detail: "sample application."
+      sign_up: "Sign Up Now!"
     help:
       help_title: "Help"
       heading: "Help"
       description_title: "Get help on the Ruby on Rails Tutorial at the"
+    about:
+      about_title: "About"
+      about_heading: "About"
+      about_desc_a: "The"
+      about_desc_b: ", part of the"
+      about_desc_c: "family of tutorials, is a"
+      about_desc_d: "and"
+      about_desc_e: "to teach web development with"
+      about_desc_f: ". This is the sample app for the tutorial."
+      learn_enough: "Learn Enough"
+      book: "book"
+      screen: "screencast series"
+
+  users:
+    new:
+      sign_up_title: "Sign Up"
+      heading: "Sign Up"
+      description_title: "This will be a sign up page for new users."
