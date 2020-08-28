@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  USERS_PARAMS = %i(name email password password_confirmation).freeze
+
   attr_accessor :remember_token
 
-  USERS_PARAMS = %i(name email password password_confirmation).freeze
+  scope :sort_by_name, ->{order name: :asc}
   
   validates :name, presence: true,
     length: { maximum: Settings.validations.name.max_length }
@@ -12,12 +14,12 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: true }
 
   validates :password, presence: true,
-    length: { minimum: Settings.validations.password.min_length }
+    length: { minimum: Settings.validations.password.min_length }, allow_nil: true
 
   has_secure_password
 
   before_save :downcase_email
-  
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
