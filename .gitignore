@@ -42,6 +42,7 @@ yarn-debug.log*
 .browserslistrc
 config/database.yml
 test/
+/storage
 config/credentials.yml.enc
 
 config/settings.local.yml

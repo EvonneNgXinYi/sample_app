@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+  
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -67,6 +69,10 @@ class User < ApplicationRecord
   
   def password_reset_expired?
     reset_sent_at < Settings.collections.psword_reset_expired_time_in_hours
+  end
+
+  def feed
+    microposts
   end
 
   private 
