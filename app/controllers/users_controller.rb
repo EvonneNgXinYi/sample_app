@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :load_user, except: %i(new create index)
-  before_action :logged_in_user, except: %i(show new create)
+  before_action :logged_in_user, except: %i(new create)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @microposts = @user.microposts.page params[:page]
-
+    @follow = current_user.active_relationships.build
+    @unfollow = current_user.active_relationships.find_by followed_id: @user.id
   end
  
   def new
@@ -48,6 +49,18 @@ class UsersController < ApplicationController
       flash[:warning] = t ".fail_mess_delete"
     end
     redirect_to users_path
+  end
+
+  def following
+    @title = "Following"
+    @user = User.following.page params[:id]
+    render "show_follow"
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.followes.page params[:id]
+    render "show_follow"
   end
 
   private
